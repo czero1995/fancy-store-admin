@@ -13,13 +13,11 @@ export function apiAddProduct(params) {
 }
 
 export function apiGetProduct(pageNum, pageSize, category) {
-  return axios.get(
-    `product/all?pageNum=${pageNum}&pageSize=${pageSize}&category=${category}`
-  )
+  return axios.get(`product/all?pageNum=${pageNum}&pageSize=${pageSize}&category=${category}`)
 }
 
-export function apiGetProductDetail(id) {
-  return axios.get(`product/detail?id=${id}`)
+export function apiGetProductDetail(uid) {
+  return axios.get(`product/detail?uid=${uid}`)
 }
 
 export function apiDeleteProduct(id) {
@@ -28,9 +26,9 @@ export function apiDeleteProduct(id) {
   })
 }
 
-export function apiUpdateProduct(id, params) {
+export function apiUpdateProduct(uid, params) {
   return axios.post('product/update', {
-    id: id,
+    uid: uid,
     params
   })
 }

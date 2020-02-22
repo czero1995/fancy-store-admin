@@ -1,53 +1,28 @@
 <template>
   <div class="login-container">
-    <el-form
-      ref="loginForm"
-      :model="loginForm"
-      :rules="loginRules"
-      class="login-form"
-      auto-complete="on"
-      label-position="left"
-    >
+    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
       <div class="title-container">
         <h3 class="title">系统登录</h3>
       </div>
 
       <el-form-item prop="username">
         <span class="svg-container">
-          <svg-icon icon-class="user"/>
+          <svg-icon icon-class="user" />
         </span>
-        <el-input
-          v-model="loginForm.username"
-          :placeholder="$t('login.username')"
-          name="username"
-          type="text"
-          auto-complete="on"
-        />
+        <el-input v-model="loginForm.username" :placeholder="$t('login.username')" name="username" type="text" auto-complete="on" />
       </el-form-item>
 
       <el-form-item prop="password">
         <span class="svg-container">
-          <svg-icon icon-class="password"/>
+          <svg-icon icon-class="password" />
         </span>
-        <el-input
-          v-model="loginForm.password"
-          :type="passwordType"
-          :placeholder="$t('login.password')"
-          name="password"
-          auto-complete="on"
-          @keyup.enter.native="handleLogin"
-        />
+        <el-input v-model="loginForm.password" :type="passwordType" :placeholder="$t('login.password')" name="password" auto-complete="on" @keyup.enter.native="handleLogin" />
         <span class="show-pwd" @click="showPwd">
-          <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'"/>
+          <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
         </span>
       </el-form-item>
 
-      <el-button
-        :loading="loading"
-        type="primary"
-        style="width:100%;margin-bottom:70px;"
-        @click.native.prevent="handleLogin"
-      >登录</el-button>
+      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:70px;" @click.native.prevent="handleLogin">登录</el-button>
     </el-form>
     <!-- <div class="sign-btn" @click="wechatHandleClick('wechat')">
       <span class="wx-svg-container">
@@ -143,13 +118,17 @@ export default {
         this.loginForm.username,
         this.loginForm.password
       );
-      if (res.data.code == 0) {
-        console.log("a跳转到");
+      if (res.data.code === 0) {
         this.$router.push({
           path: "/"
         });
+      } else {
+        this.$message({
+          message: res.data.msg,
+          type: "error",
+          duration: 1500
+        });
       }
-      console.log("res", res);
     }
   }
 };

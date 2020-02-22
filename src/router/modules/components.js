@@ -67,12 +67,6 @@ const componentsRouter = {
       meta: { title: 'componentMixin' }
     },
     {
-      path: 'back-to-top',
-      component: () => import('@/views/components-demo/backToTop'),
-      name: 'BackToTopDemo',
-      meta: { title: 'backToTop' }
-    },
-    {
       path: 'drag-dialog',
       component: () => import('@/views/components-demo/dragDialog'),
       name: 'DragDialogDemo',

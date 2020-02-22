@@ -12,17 +12,17 @@ export function apiGetBanner() {
   return axios.get('banner/all')
 }
 
-export function apiGetBannerDetail(id) {
-  return axios.get(`banner/detail?id=${id}`)
+export function apiGetBannerDetail(uid) {
+  return axios.get(`banner/detail?uid=${uid}`)
 }
-export function apiDeleteBanner(id) {
+export function apiDeleteBanner(uid) {
   return axios.post('banner/delete', {
-    id: id
+    uid
   })
 }
-export function apiUpdateBanner(id, params) {
+export function apiUpdateBanner(uid, params) {
   return axios.post('banner/update', {
-    id: id,
+    uid,
     params
   })
 }
