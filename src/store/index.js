@@ -1,30 +1,29 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import actions from './actions'
 import app from './modules/app'
-import errorLog from './modules/errorLog'
-import permission from './modules/permission'
-import tagsView from './modules/tagsView'
+import about from './modules/about'
+import product from './modules/product'
 import user from './modules/user'
-import commonUse from './modules/commonUse'
+import permission from './modules/permission'
 import getters from './getters'
-// import createPersistedState from 'vuex-persistedstate'
+import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
+export default new Vuex.Store({
+  actions,
+  getters,
   modules: {
     app,
-    errorLog,
-    permission,
-    tagsView,
+    about,
     user,
-    commonUse
+    permission,
+    product,
   },
-  getters,
   plugins: [
-    // createPersistedState({
-    //   storage: window.sessionStorage
-    // })
-  ]
+    createPersistedState({
+      storage: window.localStorage,
+      paths: ['app'],
+    }),
+  ],
 })
-
-export default store
